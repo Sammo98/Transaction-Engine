@@ -135,33 +135,6 @@ impl Transaction {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use csv::{ReaderBuilder, Trim};
-
-    // Create reader from path
-    fn create_tx_reader(path: String) -> Reader<File> {
-        ReaderBuilder::new()
-            .trim(Trim::All)
-            .from_path(path)
-            .expect("Failed to initalise CSV reader. Please ensure specified path is correct")
-    }
-
-    #[test]
-    #[should_panic]
-    fn invalid_path_panics() {
-        // Make sure that an invalid path causes the csv reader to panic
-        let path = "not_a_valid_path.csv".to_string();
-        let _ = create_tx_reader(path);
-    }
-
-    #[test]
-    fn valid_path_creates_reader() -> Result<(), Box<dyn Error>> {
-        // Create temp directory to test that csv reader reads valid path correctly
-        let dir = tempfile::tempdir()?;
-        let file_path = dir.path().join("temp_csv_file.csv");
-        let _ = File::create(&file_path)?;
-        let _ = create_tx_reader(file_path.as_path().display().to_string());
-        Ok(())
-    }
 
     #[test]
     fn dispute_resolve_chargeback_not_added_to_db() {
