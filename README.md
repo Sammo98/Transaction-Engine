@@ -41,9 +41,9 @@ The application outputs the Client records after the inputted list of transactio
 
 Example usage of the application :
 
-`cargo run -- -file_path.csv > clients.csv` (Debug Mode)
+`cargo run -- file_path.csv > clients.csv` (Debug Mode)
 
-`cargo run -r -- -file_path.csv > clients.csv` (Release Mode)
+`cargo run -r -- file_path.csv > clients.csv` (Release Mode)
 
 
 ### Testing
